@@ -163,7 +163,7 @@ for group in s:muted
 endfor
 
 for group in s:todo
-  exec("hi " . group . " cterm=none ctermbg=" . s:bg . " ctermfg=" . s:yellow)
+  exec("hi " . group . " cterm=none ctermbg=" . s:bg . " ctermfg=" . s:orange)
 endfor
 
 for group in s:error
