@@ -11,6 +11,9 @@ let colors_name="mephistopheles"
 let s:bg = "232"
 let s:fg = "187"
 let s:mute = "109"
+let s:red = "160"
+let s:orange = "1"
+let s:yellow = "11"
 
 if &background == "light"
   let s:bg = "187"
@@ -29,10 +32,12 @@ if exists("g:mephistopheles_muted")
   let s:mute = g:mephistopheles_muted
 endif
 " }}}
-" Groups {{{
+" Groups {{{ 
 let s:normals = []
 let s:lamrons = []
 let s:muted = []
+let s:todo = []
+let s:error = []
 let s:clear = []
 " }}}
 " Syntax {{{
@@ -65,7 +70,11 @@ let s:normals = s:normals + [
       \ ]
 let s:muted = s:muted + [
       \ "Comment",
+      \ ]
+let s:todo = s:todo + [
       \ "Todo",
+      \ ]
+let s:error = s:error + [
       \ "Error",
       \ ]
 let s:clear = s:clear + [
@@ -126,6 +135,7 @@ let s:muted = s:muted + [
       \ "StatusLine",
       \ "StatusLineNC",
       \ "TabLineFill",
+      \ "TabLine",
       \ "VirtSplit",
       \ "WarningMsg",
       \ "WildMenu",
@@ -135,7 +145,7 @@ let s:clear = s:clear + [
       \ "Cursor",
       \ "CursorLine",
       \ "ModeMsg",
-      \ "TabLine",
+      \ "TabLineSel",
       \ "VertSplit",
       \ ]
 " }}}
@@ -150,6 +160,14 @@ endfor
 
 for group in s:muted
   exec("hi " . group . " cterm=none ctermbg=" . s:bg . " ctermfg=" . s:mute)
+endfor
+
+for group in s:todo
+  exec("hi " . group . " cterm=none ctermbg=" . s:bg . " ctermfg=" . s:yellow)
+endfor
+
+for group in s:error
+  exec("hi " . group . " cterm=none ctermbg=" . s:bg . " ctermfg=" . s:red)
 endfor
 
 for group in s:clear
